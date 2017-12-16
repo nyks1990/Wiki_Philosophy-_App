@@ -1,0 +1,18 @@
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<div th:fragment="route_steps" id="steps_wiz" th:if="${router != null and not #lists.isEmpty(router.visitedArticles)}">
+      		<h3 align="center" th:text="'Reached the Philosophy article in ' + ${router.totalHops} + ' hops!'">Reached the Philosophy article in </h3>
+      	<div  class="stepwizard">
+		      	<script type="javascript">
+       				stopLoader();
+    			</script>
+			    <div class="stepwizard-row" th:each="_article : ${router.visitedArticles}">
+			        <div class="stepwizard-step">
+			            <button class="btn btn-default btn-square" disabled="disabled"></button>
+			        </div>
+			        <h3><a target="_blank" th:href="${_article.url}" th:text="${_article.name}">name</a></h3>
+			    </div>
+    	</div>
+    </div>
+</html>
